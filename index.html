@@ -1,0 +1,60 @@
+<head>
+  <style>
+    #navbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#navbar button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+  </style>
+  <script>
+	function show(id) {
+    // Hide all categories
+    document.querySelectorAll('.menu-category').forEach(function(el) {
+        el.style.display = 'none';
+    });
+    
+    // Show the selected category
+    document.getElementById(id).style.display = 'block';
+}
+
+  </script>
+</head>
+
+
+
+<body>
+    <div id="navbar">
+        <button onclick="show('breakfast')">Breakfast</button>
+        <button onclick="show('lunch')">Lunch</button>
+        <button onclick="show('dinner')">Dinner</button>
+        <button onclick="show('dessert')">Dessert</button>
+    </div>
+
+    <div id="breakfast" class="menu-category">
+        Bfast
+    </div>
+
+    <div id="lunch" class="menu-category" style="display: none;">
+        lunch
+    </div>
+
+    <div id="dinner" class="menu-category" style="display: none;">
+        diondin
+    </div>
+
+    <div id="dessert" class="menu-category" style="display: none;">
+        des
+    </div>
+</body>
