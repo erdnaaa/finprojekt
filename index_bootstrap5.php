@@ -1,3 +1,6 @@
+<?php
+include 'connect.php';
+?>
 <html lang="en" data-bs-theme="auto">
     <head>
         <script src="./assets/js/color-modes.js"></script>
@@ -137,6 +140,41 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+									<?php
+										$query = "SELECT * FROM produk";
+										$result = $mysqli -> query($query);
+										if ($result->num_rows > 0) {
+											while($row = $result->fetch_assoc()) {
+												//filter category
+												if ($row["category"] == 'food') {
+													//debug
+												echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
+												}
+												?>
+											<div class="col">
+                                            <div class="card shadow-sm">
+                                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                                    <title><?php echo $row["nama_produk"];?></title>
+                                                    <rect width="100%" height="100%" fill="#55595c"></rect>
+                                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                                                </svg>
+                                                <div class="card-body">
+													<strong>Title</strong>
+                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                                        </div>
+                                                        <small class="text-body-secondary">9 mins</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+										<?php
+										}
+									}
+									?>
                                         <div class="col">
                                             <div class="card shadow-sm">
                                                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -145,6 +183,7 @@
                                                     <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
                                                 </svg>
                                                 <div class="card-body">
+													<strong>Title</strong>
                                                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="btn-group">
@@ -174,6 +213,5 @@
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha512-awKijGYZmPF6XI5jaLS45zRNXAGt5HiRKRjAM0HuzRF9U/2oKX+Lh/lYFAZPQAnTRNa1TXERCKm4o1DV5VzJog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 </html>
