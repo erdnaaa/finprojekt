@@ -97,7 +97,7 @@
                     </div>
                     <div class="form-group">
                         <label>Category</label>
-                        <select class="form-select">
+                        <select class="form-select" name="category">
                             <option selected>Open this select menu</option>
                             <option value="food">Food</option>
                             <option value="dessert">Dessert</option>
