@@ -18,7 +18,7 @@
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
         // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan (id tidak perlu karena dibikin otomatis)
-        $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category','$nama_gambar_baru')";
+        $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, category, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category','$nama_gambar_baru')";
         $result = $mysqli -> query($query);
         // periska query apakah ada error
         if(!$result){
@@ -35,7 +35,7 @@
         echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='tambah_produk.php';</script>";
         }
     } else {
-    $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category', null)";
+    $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category', null)";
     $result = $mysqli -> query($query);
     // periska query apakah ada error
     if(!$result){
