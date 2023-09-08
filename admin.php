@@ -26,45 +26,18 @@
         <script src="/docs/5.3/assets/js/color-modes.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-        <meta name="generator" content="Hugo 0.112.5">
         <title>Dashboard Template · Bootstrap v5.3</title>
         <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <!-- Favicons -->
-        <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-        <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
-        <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-        <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+        
+        <!-- theme color -->
         <meta name="theme-color" content="#712cf9">
+        
         <style>
-            .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            }
             @media (min-width: 768px) {
             .bd-placeholder-img-lg {
             font-size: 3.5rem;
             }
-            }
-            .b-example-divider {
-            width: 100%;
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-            }
-            .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
             }
             .bi {
             vertical-align: -.125em;
@@ -135,25 +108,6 @@
         </svg>
         <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
-            <ul class="navbar-nav flex-row d-md-none">
-                <li class="nav-item text-nowrap">
-                    <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-                        <svg class="bi">
-                            <use xlink:href="#search"/>
-                        </svg>
-                    </button>
-                </li>
-                <li class="nav-item text-nowrap">
-                    <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                        <svg class="bi">
-                            <use xlink:href="#list"/>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-            <div id="navbarSearch" class="navbar-search w-100 collapse">
-                <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-            </div>
         </header>
         <div class="container-fluid">
             <div class="row">
