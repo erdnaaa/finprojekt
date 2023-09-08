@@ -14,36 +14,44 @@
         $ekstensi = strtolower(end($x));
         $file_tmp = $_FILES['gambar_produk']['tmp_name'];   
         $angka_acak     = rand(1,999);
-        $nama_gambar_baru = $angka_acak.'-'.$gambar_produk; //menggabungkan angka acak dengan nama file sebenarnya
+        $nama_gambar_baru = $angka_acak.'-'.$gambar_produk; //menggabungkan angka acak dengan nama file sebenarnya untuk menghindari nama file yang sama
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
-        // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan (id tidak perlu karena dibikin otomatis)
-        $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, category, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category','$nama_gambar_baru')";
+        
+        // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan
+        $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$nama_gambar_baru')";
+        
+        // menambah category
+        // $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, category, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category','$nama_gambar_baru')";
+
         $result = $mysqli -> query($query);
-        // periska query apakah ada error
+        
+        // periksa query apakah ada error
         if(!$result){
         die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
         " - ".mysqli_error($koneksi));
         } else {
         //tampil alert dan akan redirect ke halaman index.php
-        //silahkan ganti index.php sesuai halaman yang akan dituju
         echo "<script>alert('Data berhasil ditambah.');window.location='product.php';</script>";
         }
 
         } else {     
-        //jika file ekstensi tidak jpg dan png maka alert ini yang tampil
+        //alert jika file ekstensi bukan jpg dan png
         echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='tambah_produk.php';</script>";
         }
     } else {
-    $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category', null)";
+    $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', null)";
+
+    // menambah category
+    // $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category', null)";
+
     $result = $mysqli -> query($query);
-    // periska query apakah ada error
+    // periksa query apakah ada error
     if(!$result){
     die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
     " - ".mysqli_error($koneksi));
     } else {
-    //tampil alert dan akan redirect ke halaman index.php
-    //silahkan ganti index.php sesuai halaman yang akan dituju
+    //alert berhasil dan akan redirect ke halaman product
     echo "<script>alert('Data berhasil ditambah.');window.location='product.php';</script>";
     }
     }
