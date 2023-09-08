@@ -1,0 +1,24 @@
+CREATE DATABASE restaurant;
+CREATE TABLE restaurant.produk (
+    id INT(11),
+    nama_produk VARCHAR(255),
+    deskripsi TEXT,
+    harga INT(11),
+    rekomendasi TINYINT(1),
+    gambar_produk VARCHAR(255)
+);
+CREATE TABLE restaurant.pesanan (
+    order_id INT(11),
+    tanggal DATE,
+    cust_id INT(11),
+    cost INT(11)
+);
+
+
+CREATE TABLE `restaurant`.`produk` (
+`produk_id` VARCHAR(11) NOT NULL , 
+`nama_produk` VARCHAR(255) NOT NULL , 
+`deskripsi` TEXT NOT NULL , 
+`harga` INT(11) NOT NULL , 
+`rekomendasi` BOOLEAN NOT NULL , 
+`gambar_produk` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
