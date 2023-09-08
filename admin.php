@@ -120,7 +120,7 @@
                         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="admin.php">
                                         <svg class="bi">
                                             <use xlink:href="#house-fill"/>
                                         </svg>
@@ -136,7 +136,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="product.php">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
                                         <svg class="bi">
                                             <use xlink:href="#cart"/>
                                         </svg>
@@ -163,7 +163,7 @@
                             <hr class="my-3">
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="logout.php">
                                         <svg class="bi">
                                             <use xlink:href="#door-closed"/>
                                         </svg>
