@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+    include 'connect.php';
 ?>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -74,6 +74,10 @@ include 'connect.php';
             .bd-mode-toggle {
             z-index: 1500;
             }
+            img{
+            height: 255px;
+            object-fit: fill;
+            }
         </style>
     </head>
     <body>
@@ -81,9 +85,11 @@ include 'connect.php';
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container">
                     <a href="#" class="navbar-brand d-flex align-items-center">
-                        <strong>Restaurant</strong>
+                    <strong>Restaurant</strong>
                     </a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <!-- shopping cart goes here -->
+                        <!-- order history left of shopping cart -->
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -110,45 +116,40 @@ include 'connect.php';
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-									<?php
-										$query = "SELECT * FROM produk";
-										$result = $mysqli -> query($query);
-										if ($result->num_rows > 0) {
-											while($row = $result->fetch_assoc()) {
-                                                // echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>'
-												//filter category
-												// if ($row["category"] == 'food') {
-												//     //debug
-												//     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-												// }
-												?>
-											<div class="col">
+                                        <?php
+                                            $query = "SELECT * FROM produk";
+                                            $result = $mysqli -> query($query);
+                                            if ($result->num_rows > 0) {
+                                            	while($row = $result->fetch_assoc()) {
+                                                                                  // echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>'
+                                            		//filter category
+                                            		// if ($row["category"] == 'food') {
+                                            		//     //debug
+                                            		//     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
+                                            		// }
+                                            		?>
+                                        <div class="col">
                                             <div class="card shadow-sm">
-                                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                                <?php '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';?>
-                                                    <!-- <title>
-                                                        /*<?php echo $row["nama_produk"];?>*/
-                                                    </title> -->
-                                                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                                                <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
                                                 </svg>
                                                 <div class="card-body">
-													<strong><?php echo $row["nama_produk"];?></strong>
+                                                    <strong><?php echo $row["nama_produk"];?></strong>
                                                     <p class="card-text"><?php echo $row["deskripsi"];?></p>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                                             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                                         </div>
-                                                        <small class="text-body-secondary"> price disini, buy/cart di view/edit sebelah</small>
+                                                        <!-- price disini, buy/cart di view/edit sebelah -->
+                                                        <small class="text-body-secondary">Rp. <?php echo $row["harga"];?></small>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-										<?php
-										}
-									}
-									?>
+                                        <?php
+                                            }
+                                            }
+                                            ?>
                                         <div class="col">
                                             <div class="card shadow-sm">
                                                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -157,7 +158,7 @@ include 'connect.php';
                                                     <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
                                                 </svg>
                                                 <div class="card-body">
-													<strong>Title</strong>
+                                                    <strong>Title</strong>
                                                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="btn-group">
@@ -182,7 +183,7 @@ include 'connect.php';
                 <p class="float-end mb-1">
                     <a href="#">Back to top</a>
                 </p>
-                <p class="mb-1">text</p>
+                <p class="mb-1"><a href="admin.php">Admin Panel</a></p>
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
