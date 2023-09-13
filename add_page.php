@@ -175,8 +175,8 @@
                         <label>Category</label>
                         <select class="form-select" name="category" required>
                             <option value="">Open this select menu</option>
-                            <option value="food">Food</option>
-                            <option value="dessert">Dessert</option>
+                            <option value="afood">Food</option>
+                            <option value="bdessert">Dessert</option>
                             <option value="drinks">Drinks</option>
                         </select>
                     </div>

@@ -127,28 +127,28 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                category goes here
+                                <!-- category goes here -->
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                                         <?php
-                                            $query = "SELECT * FROM produk";
+                                            $query = "SELECT * FROM produk ORDER BY category";
                                             $result = $mysqli -> query($query);
                                             if ($result->num_rows > 0) {
                                             	while($row = $result->fetch_assoc()) {
-                                                    echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                            		//filter category
-                                            		if ($row["category"] == 'food') {
-                                            		    //debug
-                                            		    echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                            		}if ($row["category"] == 'drinks') {
-                                            		    //debug
-                                            		    echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                            		}else{
-                                                        echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                                    }
+                                                    //echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
+                                            		// //filter category
+                                            		// if ($row["category"] == 'food') {
+                                            		//     //debug
+                                            		//     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
+                                            		// }if ($row["category"] == 'drinks') {
+                                            		//     //debug
+                                            		//     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
+                                            		// }else{
+                                                    //     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
+                                                    // }
                                             		?>
                                         <div class="col">
                                             <div class="card shadow-sm">
