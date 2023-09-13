@@ -169,15 +169,73 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Menu
-                                <!-- category goes here -->
+                                Recommended
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                                         <?php
-                                            $query = "SELECT * FROM produk ORDER BY category";
+                                            include("recommend.php");
+                                            $product=mysqli_query($mysqli, "SELECT * from pesanan");
+                                            $matrix=array();
+                                            
+                                            while($p=mysqli_fetch_array($product))
+                                            {
+                                                $users=mysqli_query($mysqli,"SELECT user_id from pesanan where user_id=$p[user_id]");
+                                                
+                                                $username=mysqli_fetch_array($users);
+                                                $matrix[$username['user_id']][$p['product_name']]=$p['ratings'];
+                                            
+                                            }
+                                            // echo '<pre>'; print_r($matrix); echo '</pre>';
+                                            // echo '<pre>'; print_r($matrix); echo '</pre>';
+                                            $hasil = getRecommendation($matrix, "3");
+                                            foreach ($hasil as $recs => $rating) {
+                                                $product=mysqli_query($mysqli, "SELECT * FROM produk WHERE nama_produk='$recs'");
+                                                // echo $product;
+                                                if ($product->num_rows > 0) {
+                                                    while($row = $product->fetch_assoc()) {
+                                                        ?>
+                                                        <div class="col">
+                                                        <form method='post' action=''>
+                                                            <div class="card shadow-sm">
+                                                            <input type='hidden' name='id' value="<?php echo $row['id'];?>" />
+                                                                <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
+                                                                </svg>
+                                                                <div class="card-body">
+                                                                    <strong><?php echo $row["nama_produk"];?></strong>
+                                                                    <p class="card-text"><?php echo $row["deskripsi"];?></p>
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <div class="btn-group">
+                                                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                                                        </div>
+                                                                        <small class="text-body-secondary">Rp. <?php echo $row["harga"];?></small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <?php
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                Menu
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                        <?php
+                                            $query = "SELECT * FROM produk ORDER BY nama_produk";
                                             $result = $mysqli -> query($query);
                                             if ($result->num_rows > 0) {
                                             	while($row = $result->fetch_assoc()) {
