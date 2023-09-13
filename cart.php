@@ -2,17 +2,16 @@
     session_start();
     $status="";
     if (isset($_POST['action']) && $_POST['action']=="remove"){
-    if(!empty($_SESSION["shopping_cart"])) {
-    foreach($_SESSION["shopping_cart"] as $key => $value) {
-    if($_POST["id"] == $key){
-    	unset($_SESSION["shopping_cart"][$key]);
-    	$status = "<div class='box' style='color:red;'>
-    	Product is removed from your cart!</div>";
-    }
-    if(empty($_SESSION["shopping_cart"]))
-    unset($_SESSION["shopping_cart"]);
-    	}		
-    }
+		if(!empty($_SESSION["shopping_cart"])) {
+			foreach($_SESSION["shopping_cart"] as $key => $value) {
+				if($_POST["id"] == $key){
+					unset($_SESSION["shopping_cart"][$key]);
+					$status = "Product is removed from your cart!";
+				}
+				if(empty($_SESSION["shopping_cart"]))
+				unset($_SESSION["shopping_cart"]);
+			}		
+		}
     }
     
     if (isset($_POST['action']) && $_POST['action']=="change"){
@@ -205,9 +204,14 @@
                                     </tr>
                                 </tbody>
                             </table>
-							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-									<button class="btn btn-primary" type="button">Checkout</button>
-									</div>
+                            <form method="POST" action="checkout.php">
+                                <input type='hidden' name='id' value="<?php echo $product["id"]; ?>" />
+								<input type='hidden' name='total_price' value="<?php echo $total_price; ?>" />
+								<input type='hidden' name='qty' value="<?php echo $product["quantity"]; ?>" />
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="btn btn-primary" type="button">Checkout</button>
+                                </div>
+                            </form>
                             <?php
                                 }else{
                                 	echo "<h3>Your cart is empty!</h3>";
@@ -216,14 +220,14 @@
                         </div>
                     </div>
                 </div>
-				<?php
-					if (!empty($status)) {
-					echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-							<strong><?php echo $status; ?></strong>
-							<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-						</div>";
-					}
-				?>
+                <?php
+                    if (!empty($status)) {
+                    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                    		<strong>$status</strong>
+                    		<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    	</div>";
+                    }
+                    ?>
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
