@@ -1,8 +1,4 @@
 <?php
-    /*
-    Author: Javed Ur Rehman
-    Website: https://www.allphptricks.com
-    */
     session_start();
     include '../../connect.php';
     $status="";

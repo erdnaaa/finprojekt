@@ -1,5 +1,41 @@
 <?php
+    session_start();
     include 'connect.php';
+    $status="";
+    if (isset($_POST['id']) && $_POST['id']!=""){
+		$id = $_POST['id'];
+		$sql = "SELECT * FROM `produk` WHERE `id`='$id'";
+		$result = $mysqli -> query($sql);
+		$row = mysqli_fetch_assoc($result);
+		$name = $row['nama_produk'];
+		$id = $row['id'];
+		$price = $row['harga'];
+		$image = $row['gambar_produk'];
+		
+		$cartArray = array(
+			$id=>array(
+			'name'=>$name,
+			'id'=>$id,
+			'price'=>$price,
+			'quantity'=>1,
+			'image'=>$image)
+		);
+    
+		if(empty($_SESSION["shopping_cart"])) {
+			$_SESSION["shopping_cart"] = $cartArray;
+			$status = "<div class='box'>Product is added to your cart!</div>";
+		}else{
+			$array_keys = array_keys($_SESSION["shopping_cart"]);
+			if(in_array($id,$array_keys)) {
+				$status = "<div class='box' style='color:red;'>
+				Product is already added to your cart!</div>";	
+			} else {
+			$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+			$status = "<div class='box'>Product is added to your cart!</div>";
+			}
+		
+			}
+    }
 ?>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -97,7 +133,7 @@
                     </a>
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="cart.php" class="nav-link text-white">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#cart"></use></svg>
                             Cart
                         </a>
@@ -127,6 +163,7 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Menu
                                 <!-- category goes here -->
                                 </button>
                             </h2>
@@ -138,20 +175,11 @@
                                             $result = $mysqli -> query($query);
                                             if ($result->num_rows > 0) {
                                             	while($row = $result->fetch_assoc()) {
-                                                    //echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                            		// //filter category
-                                            		// if ($row["category"] == 'food') {
-                                            		//     //debug
-                                            		//     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                            		// }if ($row["category"] == 'drinks') {
-                                            		//     //debug
-                                            		//     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                            		// }else{
-                                                    //     echo '<script type="text/javascript">alert("' . $row["nama_produk"] . '")</script>';
-                                                    // }
                                             		?>
                                         <div class="col">
                                             <div class="card shadow-sm">
+                                            <form method='post' action=''>
+                                            <input type='hidden' name='id' value=".$row['id']." />
                                                 <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
                                                 </svg>
                                                 <div class="card-body">
@@ -159,7 +187,7 @@
                                                     <p class="card-text"><?php echo $row["deskripsi"];?></p>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="btn-group">
-                                                            <button type="button" class="btn btn-primary">Add to Cart</button>
+                                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
                                                         </div>
                                                         <small class="text-body-secondary">Rp. <?php echo $row["harga"];?></small>
                                                     </div>
@@ -170,28 +198,11 @@
                                                 }
                                             }
                                         ?>
-                                        <!-- <div class="col">
-                                            <div class="card shadow-sm">
-                                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                                    <title>Placeholder</title>
-                                                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                                                </svg>
-                                                <div class="card-body">
-                                                    <strong>Title</strong>
-                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                                        </div>
-                                                        <small class="text-body-secondary">9 mins</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
+                            </div>
+                            <div class="message_box" style="margin:10px 0px;">
+                            <?php echo $status; ?>
                             </div>
                         </div>
                     </div>
