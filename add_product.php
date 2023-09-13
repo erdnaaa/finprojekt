@@ -28,8 +28,8 @@
         
         // periksa query apakah ada error
         if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-        " - ".mysqli_error($koneksi));
+        die ("Query gagal dijalankan: ".mysqli_errno($mysqli).
+        " - ".mysqli_error($mysqli));
         } else {
         //tampil alert dan akan redirect ke halaman index.php
         echo "<script>alert('Data berhasil ditambah.');window.location='add_page.php';</script>";
@@ -48,8 +48,8 @@
     $result = $mysqli -> query($query);
     // periksa query apakah ada error
     if(!$result){
-    die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-    " - ".mysqli_error($koneksi));
+    die ("Query gagal dijalankan: ".mysqli_errno($mysqli).
+    " - ".mysqli_error($mysqli));
     } else {
     //alert berhasil dan akan redirect ke halaman product
     echo "<script>alert('Data berhasil ditambah.');window.location='product.php';</script>";

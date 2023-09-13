@@ -9,8 +9,8 @@ $id = $_GET["id"];
 
     //periksa query, apakah ada kesalahan
     if(!$result) {
-      die ("Gagal menghapus data: ".mysqli_errno($koneksi).
-       " - ".mysqli_error($koneksi));
+      die ("Gagal menghapus data: ".mysqli_errno($mysqli).
+       " - ".mysqli_error($mysqli));
     } else {
       echo "<script>alert('Data berhasil dihapus.');window.location='product.php';</script>";
     }

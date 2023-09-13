@@ -180,7 +180,7 @@
 						$query = "SELECT * FROM produk ORDER BY id ASC";
 						$result = $mysqli -> query($query);
 						if(!$result){
-							die ("Query Error: ".mysqli_errno($koneksi)." - ".mysqli_error($koneksi));
+							die ("Query Error: ".mysqli_errno($mysqli)." - ".mysqli_error($mysqli));
 						}
 							$no = 1;
 						while($row = mysqli_fetch_assoc($result)){

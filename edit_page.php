@@ -12,8 +12,8 @@ if (isset($_GET['id'])) {
   $result = $mysqli -> query($query);
   // jika data gagal diambil maka akan tampil error berikut
   if(!$result){
-    die ("Query Error: ".mysqli_errno($koneksi).
-       " - ".mysqli_error($koneksi));
+    die ("Query Error: ".mysqli_errno($mysqli).
+       " - ".mysqli_error($mysqli));
   }
   // mengambil data dari database
   $data = mysqli_fetch_assoc($result);
