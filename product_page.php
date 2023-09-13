@@ -169,7 +169,8 @@
 						<tr>
 							<th>No</th>
 							<th>Produk</th>
-							<th>Dekripsi</th>
+							<th>Deskripsi</th>
+							<th>Kategori</th>
 							<th>Harga</th>
 							<th>Action</th>
 						</tr>
@@ -193,6 +194,9 @@
 						</td>
 						<td>
 							<?php echo substr($row['deskripsi'], 0, 20); ?>...
+						</td>
+						<td>
+							<?php echo $row['category']; ?>
 						</td>
 						<td>Rp 
 							<?php echo number_format($row['harga'],0,',','.'); ?>

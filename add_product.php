@@ -19,10 +19,10 @@
         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
         
         // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan
-        $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$nama_gambar_baru')";
+        //$query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$nama_gambar_baru')";
         
         // menambah category
-        // $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, category, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category','$nama_gambar_baru')";
+        $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, category, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category','$nama_gambar_baru')";
 
         $result = $mysqli -> query($query);
         
@@ -32,18 +32,18 @@
         " - ".mysqli_error($koneksi));
         } else {
         //tampil alert dan akan redirect ke halaman index.php
-        echo "<script>alert('Data berhasil ditambah.');window.location='product.php';</script>";
+        echo "<script>alert('Data berhasil ditambah.');window.location='add_page.php';</script>";
         }
 
         } else {     
         //alert jika file ekstensi bukan jpg dan png
-        echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='tambah_produk.php';</script>";
+        echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='add_page.php';</script>";
         }
     } else {
-    $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', null)";
+    //$query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', null)";
 
     // menambah category
-    // $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk, rekomendasi, category) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category', null)";
+    $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, category, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$category', null)";
 
     $result = $mysqli -> query($query);
     // periksa query apakah ada error
