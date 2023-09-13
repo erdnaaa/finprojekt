@@ -27,8 +27,6 @@ include 'connect.php';
                         die ("Query gagal dijalankan: ".mysqli_errno($mysqli).
                              " - ".mysqli_error($mysqli));
                     } else {
-                      //tampil alert dan akan redirect ke halaman index.php
-                      //silahkan ganti index.php sesuai halaman yang akan dituju
                       echo "<script>alert('Data berhasil diubah.');window.location='index.php';</script>";
                     }
               } else {     
@@ -40,13 +38,10 @@ include 'connect.php';
       $query  = "UPDATE produk SET nama_produk = '$nama_produk', deskripsi = '$deskripsi', harga = '$harga', rekomendasi = '$rekomendasi'";
       $query .= "WHERE id = '$id'";
       $result = $mysqli -> query($query);
-      // periska query apakah ada error
       if(!$result){
             die ("Query gagal dijalankan: ".mysqli_errno($mysqli).
                              " - ".mysqli_error($mysqli));
       } else {
-        //tampil alert dan akan redirect ke halaman index.php
-        //silahkan ganti index.php sesuai halaman yang akan dituju
           echo "<script>alert('Data berhasil diubah.');window.location='index.php';</script>";
       }
     }
