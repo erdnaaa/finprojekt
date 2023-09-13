@@ -22,3 +22,15 @@ CREATE TABLE `restaurant`.`produk` (
 `harga` INT(11) NOT NULL , 
 `rekomendasi` BOOLEAN NOT NULL , 
 `gambar_produk` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `testingadmin`.`pesanan` (
+`order_id` INT NOT NULL AUTO_INCREMENT , 
+`user_id` INT NOT NULL , 
+`product_id` INT NOT NULL , 
+`total_amount` INT NOT NULL , 
+`is_done` BOOLEAN NOT NULL , 
+PRIMARY KEY (`order_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `testingadmin`.`order_history` (`orderhistory_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `product_id` INT NOT NULL , PRIMARY KEY (`orderhistory_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `testingadmin`.`order_history` (`orderhistory_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `product_id` INT NOT NULL , `rating` INT NULL , PRIMARY KEY (`orderhistory_id`)) ENGINE = InnoDB;
