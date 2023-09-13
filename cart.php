@@ -171,7 +171,7 @@
                                     <tr>
                                         <td><img src='./gambar/<?php echo $product["image"]; ?>'/></td>
                                         <td>
-                                            <?php echo $product["name"]; ?><br />
+                                            <p class="card-text"><?php echo $product["name"]; ?><br/></p>
                                             <form method='post' action=''>
                                                 <input type='hidden' name='id' value="<?php echo $product["id"]; ?>" />
                                                 <input type='hidden' name='action' value="remove" />
@@ -205,6 +205,9 @@
                                     </tr>
                                 </tbody>
                             </table>
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+									<button class="btn btn-primary" type="button">Checkout</button>
+									</div>
                             <?php
                                 }else{
                                 	echo "<h3>Your cart is empty!</h3>";
@@ -213,10 +216,14 @@
                         </div>
                     </div>
                 </div>
-                <div style="clear:both;"></div>
-                <div class="message_box" style="margin:10px 0px;">
-                    <?php echo $status; ?>
-                </div>
+				<?php
+					if (!empty($status)) {
+					echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+							<strong><?php echo $status; ?></strong>
+							<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+						</div>";
+					}
+				?>
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

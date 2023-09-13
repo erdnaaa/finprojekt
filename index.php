@@ -23,15 +23,14 @@
     
 		if(empty($_SESSION["shopping_cart"])) {
 			$_SESSION["shopping_cart"] = $cartArray;
-			$status = "<div class='box'>Product is added to your cart!</div>";
+			$status = "Product is added to your cart!";
 		}else{
 			$array_keys = array_keys($_SESSION["shopping_cart"]);
 			if(in_array($id,$array_keys)) {
-				$status = "<div class='box' style='color:red;'>
-				Product is already added to your cart!</div>";	
+				$status = "Product is already added to your cart";	
 			} else {
 			$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
-			$status = "<div class='box'>Product is added to your cart!</div>";
+			$status = "Product is added to your cart!";
 			}
 		
 			}
@@ -159,6 +158,14 @@
             </section>
             <div class="album py-5 bg-light">
                 <div class="container">
+                    <?php
+                        if (!empty($status)) {
+                        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                                <strong><?php echo $status; ?></strong>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>";
+                        }
+                    ?>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -176,33 +183,31 @@
                                             if ($result->num_rows > 0) {
                                             	while($row = $result->fetch_assoc()) {
                                             		?>
-                                        <div class="col">
-                                            <div class="card shadow-sm">
-                                            <form method='post' action=''>
-                                            <input type='hidden' name='id' value=".$row['id']." />
-                                                <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
-                                                </svg>
-                                                <div class="card-body">
-                                                    <strong><?php echo $row["nama_produk"];?></strong>
-                                                    <p class="card-text"><?php echo $row["deskripsi"];?></p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="btn-group">
-                                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                                        </div>
-                                                        <small class="text-body-secondary">Rp. <?php echo $row["harga"];?></small>
+                                                    <div class="col">
+                                                        <form method='post' action=''>
+                                                            <div class="card shadow-sm">
+                                                            <input type='hidden' name='id' value="<?php echo $row['id'];?>" />
+                                                                <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
+                                                                </svg>
+                                                                <div class="card-body">
+                                                                    <strong><?php echo $row["nama_produk"];?></strong>
+                                                                    <p class="card-text"><?php echo $row["deskripsi"];?></p>
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <div class="btn-group">
+                                                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                                                        </div>
+                                                                        <small class="text-body-secondary">Rp. <?php echo $row["harga"];?></small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <?php
                                                 }
                                             }
                                         ?>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="message_box" style="margin:10px 0px;">
-                            <?php echo $status; ?>
                             </div>
                         </div>
                     </div>
