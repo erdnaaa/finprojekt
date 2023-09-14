@@ -14,8 +14,6 @@
     } else {
         echo "0 results";
     }
-    // Close the database connection
-    $mysqli->close();
     
     // Encode chart data as JSON
     $chartDataJson = json_encode($chartData);
@@ -189,7 +187,50 @@
                             </button>
                         </div> -->
                     </div>
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+                    <div class="table-responsive">
+					<table class="table table-striped table-sm">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Produk</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+				<tbody>
+					<?php
+						$query = "SELECT * FROM pesanan ORDER BY order_id ASC";
+						$result = $mysqli -> query($query);
+						if(!$result){
+							die ("Query Error: ".mysqli_errno($mysqli)." - ".mysqli_error($mysqli));
+						}
+							$no = 1;
+						while($row = mysqli_fetch_assoc($result)){
+                            if ($row['is_done'] == "0") {                         
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $no; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['product_name']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['quantity']; ?>
+                            </td>
+                            <td>
+                                <a href="edit_page.php?id=<?php echo $row['order_id']; ?>">DONE</a>
+                            </td>
+                        </tr>
+					<?php
+						$no++;
+                        }
+					}
+					?>
+				</tbody>
+				</table>
+					
+				</div>
+                    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
                 </main>
             </div>
         </div>
