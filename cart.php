@@ -205,9 +205,10 @@
                                 </tbody>
                             </table>
                             <form method="POST" action="checkout.php">
-                                <input type='hidden' name='id' value="<?php echo $product["id"]; ?>" />
+                                <!-- <input type='hidden' name='id' value="<?php echo $product["id"]; ?>" /> -->
 								<input type='hidden' name='total_price' value="<?php echo $total_price; ?>" />
 								<input type='hidden' name='qty' value="<?php echo $product["quantity"]; ?>" />
+                                <input type='hidden' name='product_name' value="<?php echo $product["name"]; ?>" />
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button type="submit" class="btn btn-primary" type="button">Checkout</button>
                                 </div>
