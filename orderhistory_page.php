@@ -76,7 +76,7 @@
             z-index: 1500;
             }
             img{
-            width: 100px;
+            width: 250px;
             object-fit: fill;
             }
         </style>
@@ -123,7 +123,7 @@
                     <div class="row mb-2">
                         <?php
                             $user = $_COOKIE['user_id'];
-                            $query = "SELECT * FROM pesanan WHERE user_id = $user AND is_done = 1";
+                            $query = "SELECT * FROM pesanan JOIN produk ON pesanan.product_name = produk.nama_produk WHERE user_id = $user AND is_done = 1";
                             $result = $mysqli -> query($query);
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
@@ -136,24 +136,20 @@
                                     <form method="POST" action="rating.php">
                                         <input type="hidden" name="nama_produk" value="<?php echo $row['product_name']; ?>">
                                         <?php for ($i = 1; $i <= 5; $i++): ?>
-                                            <input type="radio" name="rating" value="<?php echo $i; ?>"> <?php echo $i; ?>
+                                        <input type="radio" name="rating" value="<?php echo $i; ?>"> <?php echo $i; ?>
                                         <?php endfor; ?>
                                         <br><br>
                                         <input type="submit" value="Rate">
                                     </form>
                                 </div>
                                 <div class="col-auto d-none d-lg-block">
-                                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                        <title>Placeholder</title>
-                                        <rect width="100%" height="100%" fill="#55595c"></rect>
-                                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                                    </svg>
+                                    <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
                                 </div>
                             </div>
                         </div>
                         <?php
-                                    }
-                                }
+                            }
+                            }
                             ?>
                     </div>
                 </div>
