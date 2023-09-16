@@ -2,7 +2,7 @@
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpassw = '';
-$dbname = 'testingadmin';
+$dbname = 'final_project';
 
 $mysqli = new mysqli($dbhost, $dbuser, $dbpassw, $dbname);
 

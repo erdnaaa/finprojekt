@@ -1,22 +1,22 @@
 <?php
     include 'connect.php';
     
-    $query = "SELECT date, cost FROM pesanana ORDER BY date ASC";
-    $result = $mysqli -> query($query);
-    $chartData = [];
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $chartData[] = [
-                'date' => $row['date'],
-                'cost' => $row['cost'],
-            ];
-        }
-    } else {
-        echo "0 results";
-    }
+    // $query = "SELECT date, cost FROM pesanana ORDER BY date ASC";
+    // $result = $mysqli -> query($query);
+    // $chartData = [];
+    // if ($result->num_rows > 0) {
+    //     while($row = $result->fetch_assoc()) {
+    //         $chartData[] = [
+    //             'date' => $row['date'],
+    //             'cost' => $row['cost'],
+    //         ];
+    //     }
+    // } else {
+    //     echo "0 results";
+    // }
     
     // Encode chart data as JSON
-    $chartDataJson = json_encode($chartData);
+    // $chartDataJson = json_encode($chartData);
 ?>
 
 <html lang="en" data-bs-theme="auto">
@@ -193,6 +193,7 @@
 						<tr>
 							<th>No</th>
 							<th>Produk</th>
+                            <th>Quantity</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -218,7 +219,7 @@
                                 <?php echo $row['quantity']; ?>
                             </td>
                             <td>
-                                <a href="edit_page.php?id=<?php echo $row['order_id']; ?>">DONE</a>
+                                <a href="done.php?id=<?php echo $row['order_id']; ?>">DONE</a>
                             </td>
                         </tr>
 					<?php
@@ -227,8 +228,7 @@
 					}
 					?>
 				</tbody>
-				</table>
-					
+				</table>					
 				</div>
                     <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
                 </main>
@@ -239,7 +239,7 @@
         <!-- Graphs -->
         <!-- <script src="./Dashboard Template for Bootstrap_files/Chart.min.js.download"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
+        <!-- <script>
             const chartData = <?php echo $chartDataJson; ?>;
             const ctx = document.getElementById('myChart')
             var myChart = new Chart(ctx, {
@@ -266,7 +266,7 @@
               }
             }
             });
-        </script>
+        </script> -->
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </body>
 </html>
