@@ -224,7 +224,7 @@
                                 <?php echo $row['quantity']; ?>
                             </td>
                             <td>
-                                <a href="done.php?id=<?php echo $row['order_id']; ?>">DONE</a>
+                                <a class="btn btn-primary btn-sm" href="done.php?id=<?php echo $row['order_id']; ?>" role="button">DONE</a>
                             </td>
                         </tr>
 					<?php

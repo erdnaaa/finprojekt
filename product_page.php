@@ -160,10 +160,22 @@
 							</div>
 						</div>
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-				<h2>
-					Menu
-				</h2>
-				<a class="btn btn-primary" href="add_page.php" role="button">Add Product</a>
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Menu</h1>
+                        <!-- <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group me-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+                                <svg class="bi">
+                                    <use xlink:href="#calendar3"/>
+                                </svg>
+                                This week
+                            </button>
+                        </div> -->
+                    </div>
+				<p><a class="btn btn-primary" href="add_page.php" role="button">Add Product</a></p>
 				<div class="table-responsive">
 					<table class="table table-striped table-sm">
 					<thead>
@@ -178,7 +190,7 @@
 					</thead>
 				<tbody>
 					<?php
-						$query = "SELECT * FROM produk ORDER BY id ASC";
+						$query = "SELECT * FROM produk ORDER BY produk_id ASC";
 						$result = $mysqli -> query($query);
 						if(!$result){
 							die ("Query Error: ".mysqli_errno($mysqli)." - ".mysqli_error($mysqli));
@@ -203,8 +215,8 @@
 							<?php echo number_format($row['harga'],0,',','.'); ?>
 						</td>
 						<td>
-							<a href="edit_page.php?id=<?php echo $row['id']; ?>">Edit</a> |
-							<a href="delete_product.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')">Hapus</a>
+							<a class="btn btn-primary btn-sm" href="edit_page.php?id=<?php echo $row['produk_id']; ?>" role="button">Edit</a>
+							<a class="btn btn-danger btn-sm" href="delete_product.php?id=<?php echo $row['produk_id']; ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" role="button">Hapus</a>
 						</td>
 					</tr>
 					<?php
