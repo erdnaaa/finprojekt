@@ -1,14 +1,19 @@
 <?php
     session_start();
+    $current_user = $_COOKIE['user_id'];
+    // echo "<script>alert('$current_user');</script>";
     include 'connect.php';
+    if (!isset($_COOKIE["user_id"])) {
+        header("Location: welcome.php");
+    }
     $status="";
     if (isset($_POST['id']) && $_POST['id']!=""){
 		$id = $_POST['id'];
-		$sql = "SELECT * FROM `produk` WHERE `id`='$id'";
+		$sql = "SELECT * FROM `produk` WHERE `produk_id`='$id'";
 		$result = $mysqli -> query($sql);
 		$row = mysqli_fetch_assoc($result);
 		$name = $row['nama_produk'];
-		$id = $row['id'];
+		$id = $row['produk_id'];
 		$price = $row['harga'];
 		$image = $row['gambar_produk'];
 		
@@ -137,7 +142,7 @@
                         </a>
                         </li>
                         <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="orderhistory_page.php" class="nav-link text-white">
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#order"></use></svg>
                             Order History
                         </a>
@@ -179,18 +184,18 @@
                                             include("recommend.php");
                                             $product=mysqli_query($mysqli, "SELECT * from pesanan");
                                             $matrix=array();
-                                            
-                                            while($p=mysqli_fetch_array($product))
-                                            {
-                                                $users=mysqli_query($mysqli,"SELECT user_id from pesanan where user_id=$p[user_id]");
+                                            $querys=mysqli_query($mysqli, "SELECT * from pesanan WHERE user_id = '$current_user'");
+                                            if ($querys->num_rows >= 1) {
+                                                while($p=mysqli_fetch_array($product)){
+                                                    $users=mysqli_query($mysqli,"SELECT user_id from pesanan where user_id=$p[user_id]");
+                                                    
+                                                    $username=mysqli_fetch_array($users);
+                                                    $matrix[$username['user_id']][$p['product_name']]=$p['ratings'];
                                                 
-                                                $username=mysqli_fetch_array($users);
-                                                $matrix[$username['user_id']][$p['product_name']]=$p['ratings'];
-                                            
-                                            }
+                                                }
                                             // echo '<pre>'; print_r($matrix); echo '</pre>';
                                             // echo '<pre>'; print_r($matrix); echo '</pre>';
-                                            $hasil = getRecommendation($matrix, "3");
+                                            $hasil = getRecommendation($matrix, $current_user);
                                             foreach ($hasil as $recs => $rating) {
                                                 $product=mysqli_query($mysqli, "SELECT * FROM produk WHERE nama_produk='$recs'");
                                                 // echo $product;
@@ -200,7 +205,7 @@
                                                         <div class="col">
                                                         <form method='post' action=''>
                                                             <div class="card shadow-sm">
-                                                            <input type='hidden' name='id' value="<?php echo $row['id'];?>" />
+                                                            <input type='hidden' name='id' value="<?php echo $row['produk_id'];?>" />
                                                                 <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
                                                                 </svg>
                                                                 <div class="card-body">
@@ -220,6 +225,36 @@
                                                     }
                                                 }
                                             }
+                                        }
+                                        else{
+                                            $query = "SELECT * FROM produk WHERE rekomendasi = '1' ORDER BY nama_produk;";
+                                            $result = $mysqli -> query($query);
+                                            if ($result->num_rows > 0) {
+                                            	while($row = $result->fetch_assoc()) {
+                                            		?>
+                                                    <div class="col">
+                                                        <form method='post' action=''>
+                                                            <div class="card shadow-sm">
+                                                            <input type='hidden' name='id' value="<?php echo $row['produk_id'];?>" />
+                                                                <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
+                                                                </svg>
+                                                                <div class="card-body">
+                                                                    <strong><?php echo $row["nama_produk"];?></strong>
+                                                                    <p class="card-text"><?php echo $row["deskripsi"];?></p>
+                                                                    <div class="d-flex justify-content-between align-items-center">
+                                                                        <div class="btn-group">
+                                                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                                                        </div>
+                                                                        <small class="text-body-secondary">Rp. <?php echo $row["harga"];?></small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            }
+                                        }
                                         ?>
                                     </div>
                                 </div>
@@ -243,7 +278,7 @@
                                                     <div class="col">
                                                         <form method='post' action=''>
                                                             <div class="card shadow-sm">
-                                                            <input type='hidden' name='id' value="<?php echo $row['id'];?>" />
+                                                            <input type='hidden' name='id' value="<?php echo $row['produk_id'];?>" />
                                                                 <img src="./gambar/<?php echo $row["gambar_produk"] ?>"/>
                                                                 </svg>
                                                                 <div class="card-body">
