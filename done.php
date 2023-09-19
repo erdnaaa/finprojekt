@@ -10,6 +10,6 @@ include 'connect.php';
             die ("Query gagal dijalankan: ".mysqli_errno($mysqli).
                             " - ".mysqli_error($mysqli));
     } else {
-        // echo "<script>alert('Done.');window.location='admin.php';</script>";
+        echo "<script>alert('Done.');window.location='admin.php';</script>";
     }
 ?>
