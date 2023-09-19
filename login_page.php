@@ -15,9 +15,11 @@ if (isset($_POST['login'])) {
     $sql = "SELECT * FROM admin_login WHERE username = '$username' AND password = '$password'";
     $result = $mysqli->query($sql);
 
-    if ($result->num_rows == 1) {
+    if ($result->num_rows > 0) {
         // Login successful, set session variables and redirect
-        $_SESSION['username'] = $username;
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
+        echo "<script>alert('added');</script>";
         header("Location: admin.php"); // Redirect to the dashboard page
     } else {
         // Login failed, show an error message

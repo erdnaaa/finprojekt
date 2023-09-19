@@ -1,5 +1,9 @@
 <?php
+	session_start();
     include('connect.php');
+    if (!isset($_SESSION["username"])) {
+        header("Location: login_page.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,14 +112,14 @@
 												Dashboard
 											</a>
 										</li>
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link d-flex align-items-center gap-2" href="#">
 												<svg class="bi">
 													<use xlink:href="#file-earmark"/>
 												</svg>
 												Orders
 											</a>
-										</li>
+										</li> -->
 										<li class="nav-item">
 											<a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
 												<svg class="bi">
@@ -124,7 +128,7 @@
 												Products
 											</a>
 										</li>
-										<li class="nav-item">
+										<!-- <li class="nav-item">
 											<a class="nav-link d-flex align-items-center gap-2" href="#">
 												<svg class="bi">
 													<use xlink:href="#people"/>
@@ -139,7 +143,7 @@
 												</svg>
 												Reports
 											</a>
-										</li>
+										</li> -->
 									</ul>
 									<hr class="my-3">
 									<ul class="nav flex-column mb-auto">
@@ -167,7 +171,7 @@
 							<th>No</th>
 							<th>Produk</th>
 							<th>Deskripsi</th>
-							<th>Kategori</th>
+							<!-- <th>Kategori</th> -->
 							<th>Harga</th>
 							<th>Action</th>
 						</tr>
@@ -192,9 +196,9 @@
 						<td>
 							<?php echo substr($row['deskripsi'], 0, 20); ?>...
 						</td>
-						<td>
+						<!-- <td>
 							<?php echo $row['category']; ?>
-						</td>
+						</td> -->
 						<td>Rp 
 							<?php echo number_format($row['harga'],0,',','.'); ?>
 						</td>

@@ -1,6 +1,9 @@
 <?php
     session_start();
     include 'connect.php';
+    if (!isset($_COOKIE["user_id"])) {
+        header("Location: welcome.php");
+    }
     ?>
 <html lang="en" data-bs-theme="auto">
     <head>
@@ -123,7 +126,8 @@
                     <div class="row mb-2">
                         <?php
                             $user = $_COOKIE['user_id'];
-                            $query = "SELECT * FROM pesanan JOIN produk ON pesanan.product_name = produk.nama_produk WHERE user_id = $user AND is_done = 1";
+                            // $query = "SELECT * FROM pesanan JOIN produk ON pesanan.product_name = produk.nama_produk WHERE user_id = $user AND is_done = 1";
+                            $query = "SELECT * FROM pesanan JOIN produk ON pesanan.product_name = produk.nama_produk WHERE user_id = $user AND is_done = 1 AND ratings IS NULL";
                             $result = $mysqli -> query($query);
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
@@ -149,6 +153,8 @@
                         </div>
                         <?php
                             }
+                            }else{
+                                echo "<h3>Your history is empty!</h3>";
                             }
                             ?>
                     </div>

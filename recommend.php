@@ -25,12 +25,6 @@
 	  }  
 	  return 1/(1+sqrt($sum));
   }  
-   
-  
-  
-  
- 
- 
  function getRecommendation($matrix,$person)
  {
 	 $total=array();

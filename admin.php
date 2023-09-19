@@ -1,5 +1,9 @@
 <?php
+    session_start();
     include 'connect.php';
+    if (!isset($_SESSION["username"])) {
+        header("Location: login_page.php");
+    }
     
     // $query = "SELECT date, cost FROM pesanana ORDER BY date ASC";
     // $result = $mysqli -> query($query);
@@ -17,6 +21,7 @@
     
     // Encode chart data as JSON
     // $chartDataJson = json_encode($chartData);
+    
 ?>
 
 <html lang="en" data-bs-theme="auto">
@@ -124,14 +129,14 @@
                                         Dashboard
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="#">
                                         <svg class="bi">
                                             <use xlink:href="#file-earmark"/>
                                         </svg>
                                         Orders
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
                                         <svg class="bi">
@@ -140,7 +145,7 @@
                                         Products
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="#">
                                         <svg class="bi">
                                             <use xlink:href="#people"/>
@@ -155,7 +160,7 @@
                                         </svg>
                                         Reports
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                             <hr class="my-3">
                             <ul class="nav flex-column mb-auto">

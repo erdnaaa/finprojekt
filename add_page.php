@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    include 'connect.php';
+    if (!isset($_SESSION["username"])) {
+        header("Location: login_page.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -107,14 +114,14 @@
                                         Dashboard
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="#">
                                         <svg class="bi">
                                             <use xlink:href="#file-earmark"/>
                                         </svg>
                                         Orders
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
                                         <svg class="bi">
@@ -123,7 +130,7 @@
                                         Products
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="#">
                                         <svg class="bi">
                                             <use xlink:href="#people"/>
@@ -138,7 +145,7 @@
                                         </svg>
                                         Reports
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                             <hr class="my-3">
                             <ul class="nav flex-column mb-auto">
@@ -171,7 +178,7 @@
                         <label>Harga</label>
                         <input type="number" class="form-control" name="harga_produk" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Category</label>
                         <select class="form-select" name="category" required>
                             <option value="">Open this select menu</option>
@@ -179,7 +186,7 @@
                             <option value="bdessert">Dessert</option>
                             <option value="drinks">Drinks</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Gambar</label>
                         <input type="file" class="form-control" name="gambar_produk" required>

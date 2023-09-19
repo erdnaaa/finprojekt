@@ -1,5 +1,11 @@
 <?php
     include 'connect.php';
+
+    session_start();
+    include 'connect.php';
+    if (!isset($_SESSION["username"])) {
+        header("Location: login_page.php");
+    }
     
     if (isset($_GET['id'])) {
       // ambil nilai id dari url dan disimpan dalam variabel $id

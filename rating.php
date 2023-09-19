@@ -9,6 +9,6 @@ include 'connect.php';
             die ("Query gagal dijalankan: ".mysqli_errno($mysqli).
                              " - ".mysqli_error($mysqli));
       } else {
-          echo "<script>alert('Data berhasil diubah.');window.location='index.php';</script>";
+          echo "<script>alert('Ratings added.');window.location='index.php';</script>";
       }
 ?>
