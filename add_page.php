@@ -23,7 +23,7 @@
         
         <!-- Custom styles for this template -->
         <link href="./assets/dashboard.css" rel="stylesheet">
-        <!-- jadi biru -->
+        <!-- biru -->
         <style>
             @media (min-width: 768px) {
             .bd-placeholder-img-lg {
@@ -114,14 +114,6 @@
                                         Dashboard
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark"/>
-                                        </svg>
-                                        Orders
-                                    </a>
-                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
                                         <svg class="bi">
@@ -130,22 +122,6 @@
                                         Products
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#people"/>
-                                        </svg>
-                                        Customers
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#graph-up"/>
-                                        </svg>
-                                        Reports
-                                    </a>
-                                </li> -->
                             </ul>
                             <hr class="my-3">
                             <ul class="nav flex-column mb-auto">
@@ -178,15 +154,6 @@
                         <label>Harga</label>
                         <input type="number" class="form-control" name="harga_produk" required>
                     </div>
-                    <!-- <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-select" name="category" required>
-                            <option value="">Open this select menu</option>
-                            <option value="afood">Food</option>
-                            <option value="bdessert">Dessert</option>
-                            <option value="drinks">Drinks</option>
-                        </select>
-                    </div> -->
                     <div class="form-group">
                         <label>Gambar</label>
                         <input type="file" class="form-control" name="gambar_produk" required>
@@ -200,9 +167,7 @@
                 </form>
             </main>
         </div>
-        <!-- Bootstrap core JavaScript
-            ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- Bootstrap core JavaScript -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

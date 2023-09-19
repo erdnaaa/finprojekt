@@ -18,9 +18,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="./assets/dashboard.css" rel="stylesheet">
-        <!-- jadi biru -->
+        <!-- biru -->
 	<style>
 		@media (min-width: 768px) {
 		.bd-placeholder-img-lg {
@@ -112,14 +112,6 @@
 												Dashboard
 											</a>
 										</li>
-										<!-- <li class="nav-item">
-											<a class="nav-link d-flex align-items-center gap-2" href="#">
-												<svg class="bi">
-													<use xlink:href="#file-earmark"/>
-												</svg>
-												Orders
-											</a>
-										</li> -->
 										<li class="nav-item">
 											<a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
 												<svg class="bi">
@@ -128,22 +120,6 @@
 												Products
 											</a>
 										</li>
-										<!-- <li class="nav-item">
-											<a class="nav-link d-flex align-items-center gap-2" href="#">
-												<svg class="bi">
-													<use xlink:href="#people"/>
-												</svg>
-												Customers
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link d-flex align-items-center gap-2" href="#">
-												<svg class="bi">
-													<use xlink:href="#graph-up"/>
-												</svg>
-												Reports
-											</a>
-										</li> -->
 									</ul>
 									<hr class="my-3">
 									<ul class="nav flex-column mb-auto">
@@ -162,18 +138,6 @@
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">Menu</h1>
-                        <!-- <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                <svg class="bi">
-                                    <use xlink:href="#calendar3"/>
-                                </svg>
-                                This week
-                            </button>
-                        </div> -->
                     </div>
 				<p><a class="btn btn-primary" href="add_page.php" role="button">Add Product</a></p>
 				<div class="table-responsive">
@@ -183,7 +147,6 @@
 							<th>No</th>
 							<th>Produk</th>
 							<th>Deskripsi</th>
-							<!-- <th>Kategori</th> -->
 							<th>Harga</th>
 							<th>Action</th>
 						</tr>
@@ -208,9 +171,6 @@
 						<td>
 							<?php echo substr($row['deskripsi'], 0, 20); ?>...
 						</td>
-						<!-- <td>
-							<?php echo $row['category']; ?>
-						</td> -->
 						<td>Rp 
 							<?php echo number_format($row['harga'],0,',','.'); ?>
 						</td>

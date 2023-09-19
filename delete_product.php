@@ -1,9 +1,8 @@
 <?php
 include 'connect.php';
 $id = $_GET["id"];
-//mengambil id yang ingin dihapus
 
-    //jalankan query DELETE untuk menghapus data
+    //jalankan DELETE untuk menghapus data
     $query = "DELETE FROM produk WHERE id='$id' ";
     $result = $mysqli -> query($query);
 

@@ -3,11 +3,8 @@ include 'connect.php';
 // Start a session to track user login status
 session_start();
 
-// Function to sanitize user input
-
 // Check if the login form is submitted
 if (isset($_POST['login'])) {
-    // Get user input and sanitize it
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -36,7 +33,7 @@ if (isset($_POST['login'])) {
         <title>Login</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <meta name="theme-color" content="#712cf9">
-        <!-- Custom styles for this template -->
+        <!-- Custom styles -->
         <link href="./assets/login.css" rel="stylesheet">
     </head>
     <body class="d-flex align-items-center py-4 bg-body-tertiary">

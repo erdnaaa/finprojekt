@@ -6,30 +6,28 @@
     if (!isset($_SESSION["username"])) {
         header("Location: login_page.php");
     }
-    
+
     if (isset($_GET['id'])) {
-      // ambil nilai id dari url dan disimpan dalam variabel $id
-      $id = ($_GET["id"]);
-    
-      // menampilkan data dari database yang mempunyai id=$id
-      $query = "SELECT * FROM produk WHERE id='$id'";
-      $result = $mysqli -> query($query);
-      // jika data gagal diambil maka akan tampil error berikut
-      if(!$result){
+        // ambil nilai id dari url dan disimpan dalam variabel $id
+        $id = ($_GET["id"]);
+
+        $query = "SELECT * FROM produk WHERE id='$id'";
+        $result = $mysqli -> query($query);
+        // jika data gagal diambil maka akan tampil error berikut
+        if(!$result){
         die ("Query Error: ".mysqli_errno($mysqli).
-           " - ".mysqli_error($mysqli));
-      }
-      // mengambil data dari database
-      $data = mysqli_fetch_assoc($result);
+            " - ".mysqli_error($mysqli));
+        }
+        $data = mysqli_fetch_assoc($result);
         // apabila data tidak ada pada database maka akan dijalankan perintah ini
-         if (!count($data)) {
+            if (!count($data)) {
             echo "<script>alert('Data tidak ditemukan pada database');window.location='index.php';</script>";
-         }
-    } else {
-      // apabila tidak ada data GET id pada akan di redirect ke index.php
-      echo "<script>alert('Masukkan data id.');window.location='index.php';</script>";
-    }         
-    ?>
+            }
+    }else {
+        // apabila tidak ada data GET id pada akan di redirect ke index.php
+        echo "<script>alert('Masukkan data id.');window.location='index.php';</script>";
+    }
+?>
 <html lang="en" data-bs-theme="auto">
     <head>
 		<script src="/docs/5.3/assets/js/color-modes.js"></script>
@@ -85,9 +83,8 @@
             z-index: 1500;
             }
         </style>
-		<!-- Custom styles for this template -->
+		<!-- Custom styles-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
         <link href="./assets/dashboard.css" rel="stylesheet">
     </head>
     <body>
@@ -135,35 +132,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    <svg class="bi">
-                                        <use xlink:href="#file-earmark"></use>
-                                    </svg>
-                                    Orders
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
                                     <svg class="bi">
                                         <use xlink:href="#cart"></use>
                                     </svg>
                                     Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    <svg class="bi">
-                                        <use xlink:href="#people"></use>
-                                    </svg>
-                                    Customers
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    <svg class="bi">
-                                        <use xlink:href="#graph-up"></use>
-                                    </svg>
-                                    Reports
                                 </a>
                             </li>
                         </ul>

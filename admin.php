@@ -129,14 +129,6 @@
                                         Dashboard
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark"/>
-                                        </svg>
-                                        Orders
-                                    </a>
-                                </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="product_page.php">
                                         <svg class="bi">
@@ -145,22 +137,6 @@
                                         Products
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#people"/>
-                                        </svg>
-                                        Customers
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#graph-up"/>
-                                        </svg>
-                                        Reports
-                                    </a>
-                                </li> -->
                             </ul>
                             <hr class="my-3">
                             <ul class="nav flex-column mb-auto">

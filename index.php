@@ -1,7 +1,6 @@
 <?php
     session_start();
     $current_user = $_COOKIE['user_id'];
-    // echo "<script>alert('$current_user');</script>";
     include 'connect.php';
     if (!isset($_COOKIE["user_id"])) {
         header("Location: welcome.php");
@@ -193,12 +192,9 @@
                                                     $matrix[$username['user_id']][$p['product_name']]=$p['ratings'];
                                                 
                                                 }
-                                            // echo '<pre>'; print_r($matrix); echo '</pre>';
-                                            // echo '<pre>'; print_r($matrix); echo '</pre>';
                                             $hasil = getRecommendation($matrix, $current_user);
                                             foreach ($hasil as $recs => $rating) {
                                                 $product=mysqli_query($mysqli, "SELECT * FROM produk WHERE nama_produk='$recs'");
-                                                // echo $product;
                                                 if ($product->num_rows > 0) {
                                                     while($row = $product->fetch_assoc()) {
                                                         ?>

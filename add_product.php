@@ -9,7 +9,7 @@
     $category       = $_POST['category'];
 
     if($gambar_produk != "") {
-        $ekstensi_diperbolehkan = array('png','jpg'); //ekstensi file gambar yang bisa diupload 
+        $ekstensi_diperbolehkan = array('png','jpg'); //ekstensi file gambar yang boleh diupload 
         $x = explode('.', $gambar_produk); //memisahkan nama file dengan ekstensi yang diupload
         $ekstensi = strtolower(end($x));
         $file_tmp = $_FILES['gambar_produk']['tmp_name'];   
@@ -18,7 +18,7 @@
         if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {     
         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
         
-        // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan
+        //INSERT data sesuai urutan
         $query = "INSERT INTO produk (nama_produk, deskripsi, harga, rekomendasi, gambar_produk) VALUES ('$nama_produk', '$deskripsi', '$harga', '$rekomendasi', '$nama_gambar_baru')";
         
         // menambah category
@@ -36,7 +36,7 @@
         }
 
         } else {     
-        //alert jika file ekstensi bukan jpg dan png
+        //alert jika ekstensi bukan jpg dan png
         echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='add_page.php';</script>";
         }
     } else {
